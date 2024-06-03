@@ -21,6 +21,16 @@
         <beans:property name="suffix" value=".jsp" />
     </beans:bean>
 
+    <!-- MultipartResolver 설정 -->
+    <beans:bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
+        <!-- 최대 업로드 크기 설정 -->
+        <beans:property name="maxUploadSize" value="5242880"/>
+        <beans:property name="defaultEncoding" value="utf-8"/>
+    </beans:bean>
+
+    <!-- 다른 설정들을 여기에 추가할 수 있습니다 -->
+
+
     <context:component-scan base-package="kr.ac.hansung.cse.controller" />
 
 </beans:beans>

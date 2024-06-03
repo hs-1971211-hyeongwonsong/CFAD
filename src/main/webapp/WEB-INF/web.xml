@@ -12,7 +12,6 @@
         <param-value>
             /WEB-INF/spring/appServlet/service-context.xml
             /WEB-INF/spring/appServlet/dao-context.xml
-            /WEB-INF/spring/appServlet/security-context.xml
         </param-value>
     </context-param>
 
@@ -30,6 +29,13 @@
             <param-value>/WEB-INF/spring/appServlet/servlet-context.xml</param-value>
         </init-param>
         <load-on-startup>1</load-on-startup>
+
+        <multipart-config>
+            <location>C:\\dev\workspace\Homework1\src\main\webapp\resources\uploads</location>
+            <max-file-size>5242880</max-file-size>
+            <max-request-size>41943040</max-request-size>
+            <file-size-threshold>20971520</file-size-threshold>
+        </multipart-config>
     </servlet>
 
     <servlet-mapping>
@@ -59,15 +65,18 @@
         <url-pattern>/*</url-pattern>
     </filter-mapping>
 
-
     <filter>
-        <filter-name>springSecurityFilterChain</filter-name>
-        <filter-class>org.springframework.web.filter.DelegatingFilterProxy</filter-class>
+        <filter-name>multipartFilter</filter-name>
+        <filter-class>org.springframework.web.multipart.support.MultipartFilter</filter-class>
     </filter>
 
     <filter-mapping>
-        <filter-name>springSecurityFilterChain</filter-name>
+        <filter-name>multipartFilter</filter-name>
         <url-pattern>/*</url-pattern>
     </filter-mapping>
+
+
+
+
 
 </web-app>
